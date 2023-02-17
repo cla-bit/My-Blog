@@ -1,0 +1,20 @@
+{% load static %}
+      <div class="grid">
+          {% for post in trending %}
+          <div class="grid__item">
+              <div class="mini-list-item">
+                  <div class="mini-view_image">
+                      <a class="grid-view-item__link" href="{{ post.get_absolute_url }}">
+                          <img class="grid-view-item__image blur-up lazyload" data-src="{{ post.trend_img.url }}" src="{{ post.trend_img.url }}" alt="" />
+                      </a>
+                  </div>
+                  <div class="details">
+                      <a class="grid-view-item__title" href="{{ post.get_absolute_url }}">{{ post.blog_title }}</a>
+                      <div class="grid-view-item__meta">
+                          <span class="product-price__price"><span class="money">{{ post.body|truncatewords:15 }}</span></span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>

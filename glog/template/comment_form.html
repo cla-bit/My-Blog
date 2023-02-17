@@ -1,0 +1,42 @@
+{% load static %}
+{% load widget_tweaks %}
+        <div class="formFeilds contact-form form-vertical">
+            <form method="POST" enctype="multipart/form-data" action="{% url 'blog:comment' post.id %}"
+                  id="comment_form" accept-charset="UTF-8" class="comment-form">
+                <h2>Leave a comment</h2>
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            {% render_field comment_form.name id="ContactFormName" placeholder="Name" %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                          {% render_field comment_form.email id="ContactFormEmail" placeholder="Email" %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            {% render_field comment_form.user_img id="ContactFormImg" %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            {% render_field comment_form.body id="ContactFormMessage" placeholder="Your Comment" %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="fine-print">Please note, comments must be approved before they are published</p>
+                        <input type="submit" class="btn" value="Send Message">
+                    </div>
+                </div>
+            </form>
+        </div>

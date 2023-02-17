@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html class="no-js" lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="description">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Glog</title>
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" />
+		<!-- Plugins CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+		<!-- Bootstap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		<!-- Main Style CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	</head>
+	<body class="template-blog belle">
+        <div>
+            {% block body %}
+            {% endblock %}
+            <!--Scoll Top-->
+            <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+            <!--End Scoll Top-->
+
+            <!-- Including Jquery -->
+            <script src="{% static 'assets/js/vendor/jquery-3.3.1.min.js' %}"></script>
+            <script src="{% static 'assets/js/vendor/jquery.cookie.js' %}"></script>
+            <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+            <script src="{% static 'assets/js/vendor/wow.min.js' %}"></script>
+            <!-- Including Javascript -->
+            <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+            <script src="{% static 'assets/js/plugins.js' %}"></script>
+            <script src="{% static 'assets/js/popper.min.js' %}"></script>
+            <script src="{% static 'assets/js/lazysizes.js' %}"></script>
+            <script src="{% static 'assets/js/main.js' %}"></script>
+        </div>
+	</body>
+
+	<!-- belle/posts.html   11 Nov 2019 12:46:09 GMT -->
+</html>

@@ -1,0 +1,77 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block body %}
+{% include 'base/header.html' %}
+
+		<!---------- header and mobile -------->
+			<!--Body Content-->
+			<div id="page-content">
+				<!--Page Title-->
+				<div class="page section-header text-center mb-0">
+					<div class="page-title">
+						<div class="wrapper"><h1 class="page-width">Glog</h1></div>
+					</div>
+				</div>
+				<!--End Page Title-->
+				<div class="bredcrumbWrap">
+					<div class="container breadcrumbs">
+						<a href="{% url 'blog:home' %}" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>Glog</span>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<!--Main Content-->
+						<div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col" id="keywords">
+							<div class="custom-search">
+								<form action="" method="POST" class="input-group search-header search" role="search" style="position: relative;">
+									<input class="search-header__input search__input input-group__field" type="search" name="q" placeholder="Search" aria-label="Search" autocomplete="off">
+									<span class="input-group__btn"><button class="btnSearch" type="submit"> <i class="icon anm anm-search-l"></i> </button></span>
+								</form>
+							</div>
+							<div class="blog--list-view blog--grid-load-more">
+								{% for post in posts %}
+								<div class="article"> 
+									<!-- Article Image --> 
+									<a class="article_featured-image" href="{{ post.get_absolute_url }}"> <!----- link here ---->
+										<img class="blur-up lazyload" data-src="{{ post.blog_img.url }}" src="{{ post.blog_img.url }}" alt="It's all about how you wear">
+									</a> 
+									<h2 class="h3"><a href="{{ post.get_absolute_url }}">{{ post.blog_title }}</a></h2>
+									<h6 class="h6">Tags: {{ post.tags.all|join:", "|default:"No Tags" }}</h6>
+									<ul class="publish-detail">
+										<li><i class="anm anm-user-al" aria-hidden="true"></i>  {{ post.author }}</li>
+										<li><i class="icon anm anm-clock-r"></i> <time datetime="{{ post.date_published|time }}">{{ post.date_published }}</time></li>
+										<li>
+											{% if post.comment_posts.count %}
+											<ul class="inline-list">   
+												<li><i class="icon anm anm-comments-l"></i> <a href="#">{{ post.comment_posts.count }} comment{{ post.comment_posts.count|pluralize }}</a></li>
+											</ul>
+											{% endif %}
+										</li>
+									</ul>
+									<p></p>
+									<div class="rte"> 
+										<p>{{ post.body|truncatewords:"50" }}</p>
+										</div>
+									<p><a href="{{ post.get_absolute_url }}" class="btn btn-secondary btn--small">Read more <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
+								</div>
+								{% endfor %}
+
+
+								{% block pagination %}
+
+								{% include 'paging.html' with page=posts %}
+
+								{% endblock %}
+							</div>
+						</div>
+						<!--End Main Content-->
+						<!-----sidebar ----->
+						{% include 'base/sidebar.html'%}
+
+					</div>
+				</div>
+				
+			</div>
+			<!--End Body Content-->
+{% include 'base/footer.html' %}
+{% endblock %}
